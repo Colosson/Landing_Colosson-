@@ -157,7 +157,6 @@ export default function ContactSection() {
             <small>{copy.conversation}</small>
             <strong>ventas@colosson.co</strong>
           </span>
-          <b aria-hidden="true">↗</b>
         </a>
       </div>
     </section>

@@ -227,7 +227,6 @@ export default function Home() {
         <span className="whatsapp-button-short" aria-hidden="true">
           WA
         </span>
-        <span aria-hidden="true">↗</span>
       </a>
 
       <header className="site-header">
@@ -261,7 +260,6 @@ export default function Home() {
             <span className="nav-cta-label nav-cta-label-mobile">
               {copy.nav.ctaMobile}
             </span>
-            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </header>
@@ -320,7 +318,6 @@ export default function Home() {
             <article className={company.className} key={company.name}>
               <div className="company-top">
                 <span>{company.number}</span>
-                <span>↗</span>
               </div>
               {company.number === "01" ? (
                 <ProductTheater />
@@ -333,8 +330,7 @@ export default function Home() {
                 <p className="company-description">{company.description}</p>
                 <AttentionTags tags={company.tags} />
                 <a href={company.href}>
-                  {copy.companiesSection.link}{" "}
-                  <span aria-hidden="true">↗</span>
+                  {copy.companiesSection.link}
                 </a>
               </div>
             </article>

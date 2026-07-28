@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mockup estático del rediseño de Expectra">
+  <title>Expectra — Mockup UI</title>
+  <style>
+    :root {
+      --canvas: #0d0b0e;
+      --surface: #171418;
+      --text: #f8f4f5;
+      --muted: #aaa1a6;
+      --pink: #f34b78;
+      --pink-light: #ff789b;
+      --amber: #f3b85b;
+      --line: rgba(255, 255, 255, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 13% 14%, rgba(243, 75, 120, .14), transparent 32rem),
+        radial-gradient(circle at 88% 85%, rgba(243, 184, 91, .10), transparent 28rem),
+        #dcd8db;
+    }
+
+    button, input { font: inherit; }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(300px, 440px) 410px;
+      align-items: center;
+      justify-content: center;
+      gap: 72px;
+      padding: 60px 40px;
+    }
+
+    .intro {
+      color: #171216;
+      max-width: 420px;
+    }
+
+    .eyebrow {
+      color: #b42e54;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: .15em;
+    }
+
+    .intro h1 {
+      margin: 16px 0 18px;
+      font-size: clamp(50px, 5vw, 76px);
+      line-height: .94;
+      letter-spacing: -.065em;
+    }
+
+    .intro p {
+      max-width: 390px;
+      margin: 0;
+      color: #665e63;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 8px;
+      margin-top: 30px;
+    }
+
+    .swatches span {
+      width: 44px;
+      height: 12px;
+      border-radius: 99px;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .08);
+    }
+
+    .intro small {
+      display: block;
+      margin-top: 24px;
+      color: #766e72;
+    }
+
+    .phone {
+      width: 410px;
+      height: 860px;
+      padding: 10px;
+      border: 1px solid #4a4649;
+      border-radius: 60px;
+      background: linear-gradient(145deg, #202024, #050505 45%, #3a3739);
+      box-shadow:
+        0 38px 90px rgba(26, 17, 22, .30),
+        inset 0 0 0 2px #777276,
+        inset 0 0 0 4px #080809;
+    }
+
+    .screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 50px;
+      clip-path: inset(0 round 50px);
+      background: var(--canvas);
+      isolation: isolate;
+    }
+
+    .status {
+      position: relative;
+      z-index: 3;
+      height: 35px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 24px 4px;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .island {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      width: 108px;
+      height: 27px;
+      transform: translateX(-50%);
+      border-radius: 20px;
+      background: #030303;
+    }
+
+    .signals {
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .content {
+      height: calc(100% - 108px);
+      overflow: hidden;
+      padding: 8px 17px 30px;
+    }
+
+    .app-header {
+      min-height: 58px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .logo {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 950;
+      letter-spacing: -.055em;
+    }
+
+    .city {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+      color: #ddd5d9;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .pin {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      border: 1.5px solid currentColor;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+    }
+
+    .bell {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .035);
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .bell::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 6px;
+      height: 6px;
+      border: 1.5px solid var(--surface);
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .search {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface);
+      color: #797277;
+    }
+
+    .magnifier {
+      position: relative;
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+    }
+
+    .magnifier::after {
+      content: "";
+      position: absolute;
+      right: -4px;
+      bottom: -2px;
+      width: 6px;
+      border-top: 1.5px solid currentColor;
+      transform: rotate(45deg);
+    }
+
+    .search span {
+      flex: 1;
+      font-size: 12px;
+    }
+
+    .search kbd {
+      padding: 3px 6px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: #716a6e;
+      font-size: 9px;
+    }
+
+    .hero {
+      position: relative;
+      height: 262px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #29171c;
+    }
+
+    .hero img,
+    .concert img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(.78) contrast(1.08);
+    }
+
+    .shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13, 11, 14, .06) 25%, rgba(13, 11, 14, .96) 100%),
+        linear-gradient(90deg, rgba(26, 7, 14, .18), transparent 68%);
+    }
+
+    .date-chip {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: var(--amber);
+      color: #4a2a0d;
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: .055em;
+    }
+
+    .favorite {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 50%;
+      background: rgba(12, 8, 11, .38);
+      font-size: 20px;
+    }
+
+    .hero-copy {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      left: 15px;
+    }
+
+    .live {
+      color: var(--pink-light);
+      font-size: 9px;
+      font-weight: 850;
+      letter-spacing: .055em;
+    }
+
+    .hero h2 {
+      margin: 4px 0 1px;
+      font-size: 31px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy > p {
+      margin: 5px 0 12px;
+      color: #d0c7cb;
+      font-size: 11px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hero-meta span {
+      color: #c0b8bc;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .055em;
+    }
+
+    .price {
+      padding: 8px 10px;
+      border-radius: 9px;
+      background: var(--pink);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 850;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin: 18px 0 9px;
+    }
+
+    .section-title small {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--pink-light);
+      font-size: 8px;
+      font-weight: 850;
+      letter-spacing: .15em;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      font-size: 17px;
+      letter-spacing: -.02em;
+    }
+
+    .section-title a {
+      color: #8e858a;
+      font-size: 10px;
+      text-decoration: none;
+    }
+
+    .section-title a b { color: var(--pink-light); }
+
+    .concerts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .concert {
+      position: relative;
+      height: 168px;
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .concert::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 22%, rgba(8, 6, 8, .96) 100%);
+    }
+
+    .concert-copy {
+      position: absolute;
+      z-index: 2;
+      right: 11px;
+      bottom: 11px;
+      left: 11px;
+    }
+
+    .concert h4 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 950;
+      letter-spacing: -.045em;
+    }
+
+    .concert p {
+      margin: 3px 0 5px;
+      color: #b8afb3;
+      font-size: 8.5px;
+    }
+
+    .concert strong {
+      color: var(--pink-light);
+      font-size: 9.5px;
+    }
+
+    .nav {
+      position: absolute;
+      z-index: 4;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 76px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: start;
+      padding: 9px 10px 15px;
+      border-top: 1px solid var(--line);
+      border-radius: 0 0 50px 50px;
+      overflow: hidden;
+      background: #100e11;
+    }
+
+    .nav-item {
+      height: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      color: #777075;
+      font-size: 8.5px;
+    }
+
+    .nav-item.active { color: var(--text); }
+
+    .nav-icon {
+      width: 17px;
+      height: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .sell {
+      width: 70px;
+      height: 52px;
+      justify-self: center;
+      transform: translateY(-5px);
+      border-radius: 18px;
+      background: var(--pink);
+      color: #fff;
+      box-shadow: 0 9px 24px rgba(243, 75, 120, .30);
+    }
+
+    .sell .nav-icon { font-size: 21px; font-weight: 300; }
+
+    .home-bar {
+      position: absolute;
+      z-index: 5;
+      bottom: 5px;
+      left: 50%;
+      width: 122px;
+      height: 4px;
+      transform: translateX(-50%);
+      border-radius: 99px;
+      background: #fff;
+    }
+
+    @media (max-width: 840px) {
+      body { background: var(--canvas); }
+      .page { display: block; min-height: 100dvh; padding: 0; }
+      .intro { display: none; }
+      .phone {
+        width: 100%;
+        height: 100dvh;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: var(--canvas);
+      }
+      .screen {
+        border-radius: 0;
+        clip-path: none;
+      }
+
+      .nav { border-radius: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="intro">
+      <span class="eyebrow">CONCEPTO 01 · LIVE EDITORIAL</span>
+      <h1>La noche<br>empieza aquí.</h1>
+      <p>
+        Un Home más visual, directo y premium para descubrir conciertos
+        y vender entradas con confianza.
+      </p>
+      <div class="swatches" aria-label="Paleta de color">
+        <span style="background:#f34b78"></span>
+        <span style="background:#f3b85b"></span>
+        <span style="background:#161317"></span>
+        <span style="background:#f7f3f4"></span>
+      </div>
+      <small>Mockup estático y responsive · Expectra UI rework</small>
+    </section>
+
+    <section class="phone" aria-label="Mockup móvil de Expectra">
+      <div class="screen">
+        <div class="status">
+          <span>9:41</span>
+          <div class="island"></div>
+          <span class="signals">▮▮▮ ◔ ▰</span>
+        </div>
+
+        <div class="content">
+          <header class="app-header">
+            <div>
+              <p class="logo">EXPECTRA</p>
+              <div class="city">
+                <span class="pin"></span>
+                Bogotá
+                <span style="color:#777075">⌄</span>
+              </div>
+            </div>
+            <div class="bell" aria-label="Notificaciones">♧</div>
+          </header>
+
+          <div class="search">
+            <span class="magnifier"></span>
+            <span>Buscar eventos, artistas, ciudad</span>
+            <kbd>⌘ K</kbd>
+          </div>
+
+          <article class="hero">
+            <img
+              src="assets/hero.jpg"
+              alt="Público disfrutando un concierto">
+            <div class="shade"></div>
+            <span class="date-chip">ÚLTIMA SEMANA</span>
+            <span class="favorite">♡</span>
+
+            <div class="hero-copy">
+              <span class="live">EN VIVO</span>
+              <h2>RYAN CASTRO</h2>
+              <p>Awooween 2026 · Estadio El Campín</p>
+              <div class="hero-meta">
+                <span>31 OCT · BOGOTÁ</span>
+                <span class="price">DESDE $560.000</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="section-title">
+            <div>
+              <small>PARA TI</small>
+              <h3>Próximos conciertos</h3>
+            </div>
+            <a href="#" onclick="return false">Ver todos <b>→</b></a>
+          </div>
+
+          <section class="concerts" aria-label="Próximos conciertos">
+            <article class="concert">
+              <img
+                src="assets/karol.jpg"
+                alt="Concierto de Karol G">
+              <div class="concert-copy">
+                <h4>KAROL G</h4>
+                <p>6 de diciembre · Bogotá</p>
+                <strong>desde $604.800</strong>
+              </div>
+            </article>
+
+            <article class="concert">
+              <img
+                src="assets/arcangel.jpg"
+                alt="Concierto de Arcángel">
+              <div class="concert-copy">
+                <h4>ARCÁNGEL</h4>
+                <p>5 de septiembre · Medellín</p>
+                <strong>desde $1.500.800</strong>
+              </div>
+            </article>
+          </section>
+        </div>
+
+        <nav class="nav" aria-label="Navegación principal">
+          <div class="nav-item active">
+            <span class="nav-icon">⌂</span>
+            <span>Inicio</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">▣</span>
+            <span>Billetera</span>
+          </div>
+          <div class="nav-item sell">
+            <span class="nav-icon">＋</span>
+            <span>Vender</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">◇</span>
+            <span>Pedidos</span>
+          </div>
+          <div class="nav-item">
+            <span class="nav-icon">♙</span>
+            <span>Perfil</span>
+          </div>
+        </nav>
+
+        <div class="home-bar"></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

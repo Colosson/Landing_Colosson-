@@ -1582,9 +1582,10 @@ html.intro-skipped .hero-bottom {
 }
 
 html[data-language="es"] .contact-line:first-child {
-  overflow-clip-margin: 0.6em 0.35em;
-  padding-left: 0.1em;
-  margin-left: -0.1em;
+  overflow-clip-margin: 0.6em;
+  padding-left: 0.18em;
+  margin-left: -0.18em;
+  padding-bottom: 0.05em;
 }
 
 .contact-line > span {
@@ -1862,6 +1863,7 @@ footer > div {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
     gap: 0.85rem;
+    width: 100%;
   }
 
   .hero-bottom > p {
@@ -1869,27 +1871,31 @@ footer > div {
   }
 
   html[data-language="es"] .hero-bottom > p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.35;
+    max-width: 100%;
+    width: 100%;
   }
 
   .circle-link {
     flex: 0 0 auto;
+    grid-column: 2;
     height: 60px;
     width: 60px;
   }
 
   html[data-language="es"] .work-heading .animated-work-title {
-    font-size: clamp(3.1rem, 13.5vw, 4.2rem);
-    line-height: 0.94;
-    margin-block: 1rem 1.6rem;
+    font-size: clamp(2.5rem, 11.5vw, 3.8rem);
+    line-height: 1.08;
+    margin-block: 1rem 1.75rem;
   }
 
   html[data-language="es"] .work-heading .animated-work-title .work-title-line:nth-child(2) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.12em;
+    gap: 0.28em;
+    margin-top: 0.15em;
   }
 
   html[data-language="es"] .work-heading .animated-work-title .work-title-word {
@@ -1897,7 +1903,7 @@ footer > div {
   }
 
   html[data-language="es"] .work-heading .animated-work-title .work-title-line:first-child .work-title-word {
-    margin-right: 0.18em;
+    margin-right: 0.2em;
   }
 
   .hero-media {
@@ -2165,6 +2171,7 @@ footer > div {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
     gap: 0.75rem;
+    width: 100%;
   }
 
   .hero-bottom > p {
@@ -2173,8 +2180,10 @@ footer > div {
   }
 
   html[data-language="es"] .hero-bottom > p {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     line-height: 1.3;
+    max-width: 100%;
+    width: 100%;
   }
 
   .circle-link {

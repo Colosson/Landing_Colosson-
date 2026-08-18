@@ -13,7 +13,6 @@ export default function AnimatedWorkTitle() {
   const [revealedWords, setRevealedWords] = useState(0);
 
   useEffect(() => {
-    setRevealedWords(0);
     const title = titleRef.current;
     if (!title) return;
 
@@ -22,8 +21,10 @@ export default function AnimatedWorkTitle() {
     );
 
     if (reducedMotion.matches) {
-      setRevealedWords(words.length);
-      return;
+      const reducedMotionFrame = window.requestAnimationFrame(() =>
+        setRevealedWords(words.length),
+      );
+      return () => window.cancelAnimationFrame(reducedMotionFrame);
     }
 
     let frame = 0;

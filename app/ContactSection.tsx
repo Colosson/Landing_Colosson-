@@ -30,7 +30,6 @@ export default function ContactSection() {
         };
 
   useEffect(() => {
-    setIsVisible(false);
     const section = sectionRef.current;
 
     if (!section) {

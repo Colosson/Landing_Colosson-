@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function PageIntro() {
@@ -36,23 +37,25 @@ export default function PageIntro() {
       <span className="page-intro-panel page-intro-panel-top" />
       <span className="page-intro-panel page-intro-panel-bottom" />
       <div className="page-intro-mark">
-        <img
+        <Image
           className="page-intro-piece page-intro-piece-top"
           src="/colosson-symbol.png"
           alt=""
-          width="855"
-          height="678"
-          decoding="sync"
+          width={855}
+          height={678}
           draggable="false"
+          priority
+          unoptimized
         />
-        <img
+        <Image
           className="page-intro-piece page-intro-piece-bottom"
           src="/colosson-symbol.png"
           alt=""
-          width="855"
-          height="678"
-          decoding="sync"
+          width={855}
+          height={678}
           draggable="false"
+          priority
+          unoptimized
         />
       </div>
     </div>

@@ -30,8 +30,8 @@ export default function AttentionTags({ tags }: AttentionTagsProps) {
       !isVisible ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-      setActiveIndex(-1);
-      return;
+      const reset = window.setTimeout(() => setActiveIndex(-1), 0);
+      return () => window.clearTimeout(reset);
     }
 
     let timer = 0;

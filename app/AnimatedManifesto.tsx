@@ -35,10 +35,6 @@ export default function AnimatedManifesto() {
   );
 
   useEffect(() => {
-    setActiveWord(-1);
-    setIsBothFocused(false);
-    setRevealedWords(0);
-
     const container = containerRef.current;
     if (!container) return;
 
@@ -47,8 +43,10 @@ export default function AnimatedManifesto() {
     );
 
     if (prefersReducedMotion.matches) {
-      setRevealedWords(wordCount);
-      return;
+      const reducedMotionFrame = window.requestAnimationFrame(() =>
+        setRevealedWords(wordCount),
+      );
+      return () => window.cancelAnimationFrame(reducedMotionFrame);
     }
 
     let frame = 0;

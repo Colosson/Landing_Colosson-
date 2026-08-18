@@ -138,7 +138,7 @@ export default function ProductTheater() {
               index === activeProduct ? "is-active" : ""
             }`}
             src={item.src}
-            alt={index === activeProduct ? item.alt : ""}
+            alt={item.alt}
             width={item.width}
             height={item.height}
             unoptimized

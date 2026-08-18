@@ -15,6 +15,7 @@ import ProductTheater from "./ProductTheater";
 import ProductTheater3D from "./ProductTheater3D";
 import ScrollMotionVideo from "./ScrollScrubVideo";
 import ScrollThemeTransition from "./ScrollThemeTransition";
+import ShareButton from "./ShareButton";
 
 const content = {
   en: {
@@ -54,7 +55,7 @@ const content = {
         description:
           "We create AI systems, automations and digital products designed around real operations — not technology for technology’s sake.",
         tags: ["Artificial intelligence", "Automation", "Digital products"],
-        href: "#company-link",
+        href: "/ai-systems",
         className: "company-card company-card-ai",
       },
       {
@@ -64,7 +65,7 @@ const content = {
         description:
           "We design and produce custom 3D-printed objects for companies — from branded products to functional pieces made for the real world.",
         tags: ["Product design", "3D printing", "Manufacturing"],
-        href: "#company-link",
+        href: "/custom-products",
         className: "company-card company-card-3d",
       },
     ],
@@ -79,6 +80,7 @@ const content = {
         detail: "Custom object · NFC enabled",
         image: "/media/work/corporate-character-nfc.webp",
         alt: "Copper 3D-printed corporate character keychain with an NFC-enabled design",
+        href: "/custom-products",
       },
       {
         number: "02",
@@ -86,6 +88,7 @@ const content = {
         detail: "Branded hardware · NFC enabled",
         image: "/media/work/connected-key-nfc.webp",
         alt: "White 3D-printed branded key with a copper NFC mark",
+        href: "/connected-products",
       },
       {
         number: "03",
@@ -94,6 +97,7 @@ const content = {
         image: "/media/work/smart-valet-token-system.webp",
         alt: "Smart Valet Token System shown across its mobile and desktop interfaces with an NFC token",
         preserveFrame: true,
+        href: "/connected-products",
       },
       {
         number: "04",
@@ -102,11 +106,17 @@ const content = {
         image: "/media/work/expectra-events-ticketing-rework.webp",
         alt: "Expectra events and ticketing app redesign presented in a mobile interface mockup",
         embedUrl: "/mockups/expectra/index.html",
+        href: "/ai-systems",
       },
     ],
     footer: {
       line: "Medellín, Colombia · Working with ambitious teams everywhere.",
       top: "Back to top ↑",
+      solutions: [
+        ["AI systems", "/ai-systems"],
+        ["NFC products", "/connected-products"],
+        ["Custom products", "/custom-products"],
+      ],
     },
   },
   es: {
@@ -146,7 +156,7 @@ const content = {
         description:
           "Creamos sistemas de IA, automatizaciones y productos digitales pensados para operaciones reales — tecnología con un propósito concreto.",
         tags: ["Inteligencia artificial", "Automatización", "Productos digitales"],
-        href: "#company-link",
+        href: "/ai-systems",
         className: "company-card company-card-ai",
       },
       {
@@ -156,7 +166,7 @@ const content = {
         description:
           "Diseñamos y producimos objetos impresos en 3D para empresas — desde productos de marca hasta piezas funcionales hechas para el mundo real.",
         tags: ["Diseño de producto", "Impresión 3D", "Manufactura"],
-        href: "#company-link",
+        href: "/custom-products",
         className: "company-card company-card-3d",
       },
     ],
@@ -171,6 +181,7 @@ const content = {
         detail: "Objeto personalizado · NFC integrado",
         image: "/media/work/corporate-character-nfc.webp",
         alt: "Llavero corporativo impreso en 3D con acabado cobre y NFC integrado",
+        href: "/custom-products",
       },
       {
         number: "02",
@@ -178,6 +189,7 @@ const content = {
         detail: "Hardware de marca · NFC integrado",
         image: "/media/work/connected-key-nfc.webp",
         alt: "Llave blanca impresa en 3D con identidad de marca y NFC integrado",
+        href: "/connected-products",
       },
       {
         number: "03",
@@ -186,6 +198,7 @@ const content = {
         image: "/media/work/smart-valet-token-system.webp",
         alt: "Sistema inteligente de valet en interfaces móvil y de escritorio con un token NFC",
         preserveFrame: true,
+        href: "/connected-products",
       },
       {
         number: "04",
@@ -194,11 +207,17 @@ const content = {
         image: "/media/work/expectra-events-ticketing-rework.webp",
         alt: "Rediseño de la aplicación de eventos y boletería Expectra en una interfaz móvil",
         embedUrl: "/mockups/expectra/index.html",
+        href: "/ai-systems",
       },
     ],
     footer: {
       line: "Medellín, Colombia · Construyendo con equipos ambiciosos, donde sea que estén.",
       top: "Volver arriba ↑",
+      solutions: [
+        ["Sistemas de IA", "/ai-systems"],
+        ["Productos NFC", "/connected-products"],
+        ["Productos personalizados", "/custom-products"],
+      ],
     },
   },
 } satisfies Record<Language, unknown>;
@@ -228,6 +247,7 @@ export default function Home() {
           WA
         </span>
       </a>
+      <ShareButton />
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label={copy.nav.home}>
@@ -390,7 +410,7 @@ export default function Home() {
               </div>
               <figcaption className="panorama-caption">
                 <span>{product.number}</span>
-                <h3>{product.title}</h3>
+                <h3><a href={product.href}>{product.title}</a></h3>
                 <p>{product.detail}</p>
               </figcaption>
             </figure>
@@ -456,8 +476,9 @@ export default function Home() {
         </a>
         <p>{copy.footer.line}</p>
         <div>
-          <a href="#social-link">Instagram</a>
-          <a href="#social-link">LinkedIn</a>
+          {copy.footer.solutions.map(([label, href]) => (
+            <a href={href} key={href}>{label}</a>
+          ))}
           <a href="#top">{copy.footer.top}</a>
         </div>
       </footer>

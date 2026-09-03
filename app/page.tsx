@@ -117,6 +117,10 @@ const content = {
         ["NFC products", "/connected-products"],
         ["Custom products", "/custom-products"],
       ],
+      legal: [
+        ["Privacy policy", "/privacy-policy"],
+        ["Terms of service", "/terms-of-service"],
+      ],
     },
   },
   es: {
@@ -217,6 +221,10 @@ const content = {
         ["Sistemas de IA", "/ai-systems"],
         ["Productos NFC", "/connected-products"],
         ["Productos personalizados", "/custom-products"],
+      ],
+      legal: [
+        ["Política de privacidad", "/privacy-policy"],
+        ["Términos y condiciones", "/terms-of-service"],
       ],
     },
   },
@@ -477,6 +485,9 @@ export default function Home() {
         <p>{copy.footer.line}</p>
         <div>
           {copy.footer.solutions.map(([label, href]) => (
+            <a href={href} key={href}>{label}</a>
+          ))}
+          {copy.footer.legal.map(([label, href]) => (
             <a href={href} key={href}>{label}</a>
           ))}
           <a href="#top">{copy.footer.top}</a>

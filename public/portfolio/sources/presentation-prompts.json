@@ -1,0 +1,31 @@
+{
+  "tool": "OpenAI built-in image generation",
+  "modelVersion": "Not exposed by the tool",
+  "purpose": "Screenshot-based portfolio presentation; source captures retained.",
+  "prompts": [
+    {
+      "slug": "md-capital",
+      "prompt": "Edit the supplied screenshot into a premium portfolio presentation image for the MD Capital website. Preserve its real MD CAPITAL logo, cream/gold palette, financial-services headline and architectural hero artwork. Keep the screenshot itself faithfully recognizable with clean, legible typography. Present one large landscape website screen on an elegant very thin light-metal desktop display, frontal with a subtle 5-degree perspective, filling 85% of the composition. Warm ivory #f2f0e8 studio backdrop and soft grounding shadow. Remove only the scrollbar and floating contact widgets; do not invent logos, functionality, metrics, testimonials or additional UI. No added headline outside the screen. Professional restrained editorial art direction, crisp high-resolution details, landscape 3:2."
+    },
+    {
+      "slug": "sofia-ecologico",
+      "prompt": "Edit the supplied screenshot into a beautiful portfolio presentation of the Sofía educational biodiversity website. Preserve the original illustrated girl with curly black hair, Colombian forest, spectacled bear, toucan, frog, and the exact title 'SOFÍA UN VERDADERO CUENTO ECOLÓGICO'. Keep the website design, palette and navigation recognizable. Place the screenshot inside one large edge-to-edge landscape tablet-like display on an ivory #f2f0e8 backdrop, almost front-facing with slight elegant perspective; it fills 85% of image. Enhance crispness, visual balance and soft studio shadows, not the website's actual content. No new characters, leaves outside the screen, extra props, metrics or text. Remove floating WhatsApp overlay. Landscape 3:2, high quality editorial digital case-study cover."
+    },
+    {
+      "slug": "agente-inventario",
+      "prompt": "Edit this actual Colosson IA website screenshot into a polished digital-product portfolio cover. Keep the real Colosson IA logo, exact headline 'Tu inventario en Excel, ahora te responde.', green black white identity, phone WhatsApp conversation and inventory preview. Faithful interface reproduction, not a redesign or invented dashboard. One large nearly front-facing landscape display with thin black bezel, floating gently above a warm ivory #f2f0e8 studio floor, filling 86% of composition. Improve legibility and lighting; generous clean edges and very soft shadow. No extra labels outside the screen, no new values or features, no added charts. Remove floating contact overlay. Landscape 3:2, crisp professional case-study image."
+    },
+    {
+      "slug": "preparacion-inventarios",
+      "prompt": "Create an elegant portfolio presentation by editing this real screenshot of Colosson's inventory preparation guide. Preserve the Colosson logo and the exact main heading 'Preparación de inventarios para una implementación exitosa', white background, green emphasis and faint brand mark. This is a preparation GUIDE, never depict it as an operating inventory dashboard. Display the original web layout faithfully within one large landscape frameless desktop screen on a warm ivory #f2f0e8 background. Gentle 5-degree perspective, minimal soft shadow, refined almost-flat editorial composition, screen occupies 85% of frame. Improve clarity and spacing around the display only; no invented metrics, controls, tables or new copy. Landscape 3:2, high resolution."
+    },
+    {
+      "slug": "pcl-legal",
+      "prompt": "Edit the supplied PCL website screenshot into a refined portfolio case-study presentation. Faithfully retain the gold 'pcl' logo, white-and-gold identity, large white physical key with gold PCL mark, the exact headline 'Cumplimiento legal bajo prevención inteligente.' and original header navigation. One large landscape desktop display almost front-facing with slight perspective, slim light-silver edges, occupying 85% of frame. Studio backdrop warm ivory #f2f0e8 with soft light and gentle contact shadow. Enhance rendering sharpness and art direction without redesigning the site, replacing the key, or adding claims, dashboards, fake statistics or text outside the display. Remove only scrollbar and floating WhatsApp overlay. Landscape 3:2, premium quiet editorial digital portfolio."
+    },
+    {
+      "slug": "colosson-empresas",
+      "prompt": "Edit this actual Colosson3D corporate-production website screenshot into a premium portfolio presentation. Preserve the Colosson3D wordmark, dark website with green heading 'Tu empresa, impresa en el mundo', and the real blue NFC hotel card pictured in the screenshot with its existing identity. Show one large landscape website display angled subtly above a warm ivory #f2f0e8 studio surface, dark webpage contained INSIDE the screen only, screen fills 85% of the composition. Improve lighting, sharpness and visual balance. Omit the lower '500+' social-proof line and floating WhatsApp bubble. Do not invent manufactured objects, clients, testimonials, extra devices or UI, no added text outside the screen. Landscape 3:2, refined editorial commercial portfolio image."
+    }
+  ]
+}

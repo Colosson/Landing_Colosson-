@@ -9,16 +9,23 @@ export type PortfolioProject = {
   subtitle: Localized;
   description: Localized;
   image: string;
+  screenshot?: string;
   alt: Localized;
   details: Array<{ label: Localized; value: Localized }>;
   source?: string;
   href?: string;
   linkLabel?: Localized;
   note?: Localized;
+  tabLabel?: Localized;
+  tabCaption?: Localized;
 };
 
 const l = (es: string, en: string): Localized => ({ es, en });
 const catalogSource = "https://portfolio.colossonlab.com/";
+const publishedSiteNote = l(
+  "Presentación visual basada en el sitio publicado.",
+  "Visual presentation based on the published website.",
+);
 
 export const physicalProjects: PortfolioProject[] = [
   {
@@ -147,6 +154,30 @@ export const physicalProjects: PortfolioProject[] = [
     ],
     source: catalogSource,
   },
+  {
+    id: "colosson-empresas",
+    category: "physical",
+    title: l("Colosson3D para empresas", "Colosson3D for businesses"),
+    subtitle: l("Identidad corporativa · Fabricación 3D", "Corporate identity · 3D fabrication"),
+    description: l(
+      "Identidad de marca convertida en objetos: impresión 3D, tarjetas NFC, kits corporativos y diseño paramétrico. Una vitrina para recorrer el proceso desde el concepto hasta la pieza final.",
+      "Brand identity turned into objects: 3D printing, NFC cards, corporate kits and parametric design. A showcase of the journey from concept to finished piece.",
+    ),
+    image: "/portfolio/colosson-empresas.webp",
+    screenshot: "/portfolio/sources/colosson-empresas.jpg",
+    alt: l(
+      "Presentación del sitio Colosson3D para empresas y fabricación corporativa",
+      "Presentation of the Colosson3D website for businesses and corporate fabrication",
+    ),
+    details: [
+      { label: l("Tipo", "Type"), value: l("Soluciones para empresas", "Business solutions") },
+      { label: l("Procesos", "Processes"), value: l("Impresión 3D y diseño paramétrico", "3D printing and parametric design") },
+      { label: l("Aplicación", "Application"), value: l("Objetos de marca y kits corporativos", "Branded objects and corporate kits") },
+    ],
+    href: "https://empresa.colosson3d.com/",
+    linkLabel: l("Explorar Colosson3D", "Explore Colosson3D"),
+    note: publishedSiteNote,
+  },
 ];
 
 export const softwareProjects: PortfolioProject[] = [
@@ -155,27 +186,34 @@ export const softwareProjects: PortfolioProject[] = [
     category: "software",
     title: l("El inventario empieza en una conversación.", "Inventory starts with a conversation."),
     subtitle: l("Control de inventario · WhatsApp → Excel", "Inventory control · WhatsApp → Excel"),
+    tabLabel: l("Inventario por WhatsApp", "Inventory via WhatsApp"),
+    tabCaption: l("WhatsApp → Excel", "WhatsApp → Excel"),
     description: l(
-      "Un flujo conversacional pensado para registrar movimientos de producto desde WhatsApp y organizarlos en Excel. La operación, desde una herramienta cotidiana.",
-      "A conversational workflow designed to record product movements through WhatsApp and organize them in Excel. Operations through an everyday tool.",
+      "Un inventario que se consulta desde una conversación. La propuesta conecta WhatsApp con el archivo de Excel para consultar referencias, registrar movimientos y recibir alertas sin cambiar la herramienta del equipo.",
+      "Inventory managed through conversation. The solution connects WhatsApp to an Excel file to look up items, record stock movements and receive alerts without changing the team’s tools.",
     ),
-    image: "/inventory-product-mockup.webp",
+    image: "/portfolio/agente-inventario.webp",
+    screenshot: "/portfolio/sources/agente-inventario.jpg",
     alt: l(
-      "Visualización de control de inventario desde una conversación de WhatsApp",
-      "Inventory control visualization through a WhatsApp conversation",
+      "Presentación del sitio Colosson IA con una conversación de WhatsApp y un inventario en Excel",
+      "Presentation of the Colosson IA website with a WhatsApp conversation and an Excel inventory",
     ),
     details: [
       { label: l("Tipo", "Type"), value: l("Automatización operativa", "Operational automation") },
       { label: l("Flujo", "Workflow"), value: l("WhatsApp → Excel", "WhatsApp → Excel") },
       { label: l("Aplicación", "Application"), value: l("Movimientos de inventario", "Inventory movements") },
     ],
-    note: l("Visualización del sistema", "System visualization"),
+    href: "https://agente.colosson.net/",
+    linkLabel: l("Conocer Colosson IA", "Explore Colosson IA"),
+    note: publishedSiteNote,
   },
   {
     id: "valet-inteligente",
     category: "software",
     title: l("Un toque. Todo conectado.", "One tap. All connected."),
     subtitle: l("Smart Valet · Sistema NFC", "Smart Valet · NFC system"),
+    tabLabel: l("Valet inteligente", "Smart valet"),
+    tabCaption: l("NFC → Operación", "NFC → Operations"),
     description: l(
       "Un token físico, la información del vehículo y una interfaz de operación. Una propuesta que une cada parte de la experiencia de valet en un mismo sistema.",
       "A physical token, vehicle information and an operational interface. A proposal that brings each part of the valet experience into one system.",
@@ -197,6 +235,8 @@ export const softwareProjects: PortfolioProject[] = [
     category: "software",
     title: l("Conversaciones que avanzan.", "Conversations that move forward."),
     subtitle: l("Agentes de WhatsApp · Automatización", "WhatsApp agents · Automation"),
+    tabLabel: l("Agentes de WhatsApp", "WhatsApp agents"),
+    tabCaption: l("Conversaciones → Acciones", "Conversations → Actions"),
     description: l(
       "Asistentes diseñados para orientar conversaciones, organizar solicitudes y dar paso a una persona cuando hace falta. Cada flujo parte de una necesidad concreta.",
       "Assistants designed to guide conversations, organize requests and hand off to a person when needed. Each workflow starts with a specific need.",
@@ -212,6 +252,32 @@ export const softwareProjects: PortfolioProject[] = [
       { label: l("Aplicación", "Application"), value: l("Atención y gestión de solicitudes", "Support and request management") },
     ],
     note: l("Visualización del sistema", "System visualization"),
+  },
+  {
+    id: "preparacion-inventarios",
+    category: "software",
+    title: l("Primero el orden. Luego la automatización.", "First organization. Then automation."),
+    subtitle: l("Preparación de inventarios · Datos y procesos", "Inventory preparation · Data and processes"),
+    tabLabel: l("Preparación de datos", "Data preparation"),
+    tabCaption: l("Datos → Sistema", "Data → System"),
+    description: l(
+      "Una guía visual para ordenar la operación antes de automatizarla: identificación de productos, ubicaciones, conteo, stock mínimo y una base maestra lista para el sistema.",
+      "A visual guide to organizing operations before automation: product identification, locations, counting, minimum stock and a master dataset ready for the system.",
+    ),
+    image: "/portfolio/preparacion-inventarios.webp",
+    screenshot: "/portfolio/sources/preparacion-inventarios.jpg",
+    alt: l(
+      "Presentación de la guía de Colosson para preparar datos de inventario",
+      "Presentation of Colosson’s guide to preparing inventory data",
+    ),
+    details: [
+      { label: l("Tipo", "Type"), value: l("Guía de preparación operativa", "Operational preparation guide") },
+      { label: l("Flujo", "Workflow"), value: l("Organización → Base maestra → Sistema", "Organization → Master data → System") },
+      { label: l("Aplicación", "Application"), value: l("Implementación de control de inventarios", "Inventory control implementation") },
+    ],
+    href: "https://inventario.colosson.net/",
+    linkLabel: l("Explorar la guía", "Explore the guide"),
+    note: publishedSiteNote,
   },
 ];
 
@@ -260,5 +326,77 @@ export const interactiveProjects: PortfolioProject[] = [
     ],
     href: "/",
     linkLabel: l("Visitar Colosson", "Visit Colosson"),
+  },
+  {
+    id: "md-capital",
+    category: "interactive",
+    title: l("MD Capital", "MD Capital"),
+    subtitle: l("Servicios financieros · Sitio bilingüe", "Financial services · Bilingual website"),
+    description: l(
+      "Un sitio que reúne crédito, vehículos, soluciones inmobiliarias y mercado de capitales en una experiencia bilingüe. Navegación por servicios, simulador de crédito y contacto por WhatsApp.",
+      "A bilingual website bringing together lending, vehicles, real estate and capital markets, with service navigation, a loan simulator and WhatsApp contact.",
+    ),
+    image: "/portfolio/md-capital.webp",
+    screenshot: "/portfolio/sources/md-capital.jpg",
+    alt: l(
+      "Presentación del sitio web de MD Capital y sus servicios financieros",
+      "Presentation of the MD Capital website and its financial services",
+    ),
+    details: [
+      { label: l("Tipo", "Type"), value: l("Sitio web corporativo", "Corporate website") },
+      { label: l("Experiencia", "Experience"), value: l("Servicios, simulador y contacto", "Services, simulator and contact") },
+      { label: l("Idiomas", "Languages"), value: l("Español e inglés", "Spanish and English") },
+    ],
+    href: "https://mdcapital.com.co/",
+    linkLabel: l("Visitar MD Capital", "Visit MD Capital"),
+    note: publishedSiteNote,
+  },
+  {
+    id: "sofia-ecologico",
+    category: "interactive",
+    title: l("Sofía: Un Verdadero Cuento Ecológico", "Sofía: Un Verdadero Cuento Ecológico"),
+    subtitle: l("Educación ambiental · Experiencia interactiva", "Environmental education · Interactive experience"),
+    description: l(
+      "El universo de Sofía llevado a una experiencia educativa: capítulos sobre biodiversidad colombiana, lectura interactiva, juegos y un pasaporte del explorador con clasificación.",
+      "Sofía’s world as an educational experience: chapters about Colombian biodiversity, interactive reading, games and an explorer passport with a leaderboard.",
+    ),
+    image: "/portfolio/sofia-ecologico.webp",
+    screenshot: "/portfolio/sources/sofia-ecologico.jpg",
+    alt: l(
+      "Presentación del sitio educativo de Sofía con ilustraciones de la biodiversidad colombiana",
+      "Presentation of Sofía’s educational website with illustrations of Colombian biodiversity",
+    ),
+    details: [
+      { label: l("Tipo", "Type"), value: l("Experiencia educativa", "Educational experience") },
+      { label: l("Interacción", "Interaction"), value: l("Lectura, juegos y exploración", "Reading, games and exploration") },
+      { label: l("Tema", "Theme"), value: l("Biodiversidad colombiana", "Colombian biodiversity") },
+    ],
+    href: "https://sofiacuentoecologico.com/",
+    linkLabel: l("Explorar el universo de Sofía", "Explore Sofía’s world"),
+    note: publishedSiteNote,
+  },
+  {
+    id: "pcl-legal",
+    category: "interactive",
+    title: l("PCL® — Prevención y Control Legal", "PCL® — Prevención y Control Legal"),
+    subtitle: l("LegalTech · Presencia digital", "LegalTech · Digital presence"),
+    description: l(
+      "La presencia digital de un ecosistema LegalTech. Una experiencia bilingüe que conecta empresas y profesionales con soluciones de cumplimiento, matrices legales, planes y asesoría especializada.",
+      "The digital presence of a LegalTech ecosystem. A bilingual experience connecting companies and professionals with compliance tools, legal matrices, plans and specialist support.",
+    ),
+    image: "/portfolio/pcl-legal.webp",
+    screenshot: "/portfolio/sources/pcl-legal.jpg",
+    alt: l(
+      "Presentación del sitio PCL de prevención y control legal para empresas y profesionales",
+      "Presentation of the PCL legal prevention and compliance website for companies and professionals",
+    ),
+    details: [
+      { label: l("Tipo", "Type"), value: l("Sitio web corporativo", "Corporate website") },
+      { label: l("Enfoque", "Focus"), value: l("Servicios y soluciones de cumplimiento", "Compliance services and solutions") },
+      { label: l("Idiomas", "Languages"), value: l("Español e inglés", "Spanish and English") },
+    ],
+    href: "https://www.pcl.legal/",
+    linkLabel: l("Visitar PCL", "Visit PCL"),
+    note: publishedSiteNote,
   },
 ];

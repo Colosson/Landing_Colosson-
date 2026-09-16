@@ -110,8 +110,9 @@
 .softwareTabs button:not([aria-selected="true"]) small { display: none; }
 .softwareTabs .arrow { width: 20px; height: 20px; }
 .softwarePreview { min-width: 0; }
+.softwarePreview[hidden] { display: none; }
 .softwarePreviewContent { animation: preview-in .35s ease both; }
-.softwareMedia { aspect-ratio: 1.75; overflow: hidden; border-radius: 5px; background: #f0eee7; }
+.softwareMedia { aspect-ratio: 1.5; overflow: hidden; border-radius: 5px; background: var(--pf-paper); }
 .softwareMedia img { width: 100%; height: 100%; display: block; object-fit: contain; }
 .softwarePreview h3 { font-size: clamp(27px, 2.45vw, 40px); letter-spacing: -.055em; line-height: 1.15; font-weight: 500; margin-top: 26px; }
 .softwarePreview p { font-size: 16px; line-height: 1.7; margin-top: 16px; color: var(--pf-muted); max-width: 680px; }
@@ -123,6 +124,25 @@
 
 .interactive { padding: 91px var(--pf-gutter) 75px; background: var(--pf-paper); border-top: 1px solid var(--pf-line); color: var(--pf-ink); }
 .interactive .sectionHeading { margin-bottom: 42px; }
+.physicalShowcases { margin-top: 78px; padding-top: 36px; border-top: 1px solid var(--pf-line); }
+.webProjects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 54px 34px; margin-bottom: 62px; }
+.caseStudy { min-width: 0; }
+.caseMedia { display: block; width: 100%; padding: 0; border: 0; overflow: hidden; background: transparent; }
+.caseMedia img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; transition: transform .5s ease; }
+.caseMedia:hover img { transform: scale(1.025); }
+.caseCopy { padding-top: 25px; }
+.caseCopy .label { font-size: 10px; letter-spacing: .09em; color: var(--pf-muted); margin-bottom: 16px; }
+.caseCopy h3 { font-size: clamp(31px, 3vw, 48px); font-weight: 500; line-height: 1.05; letter-spacing: -.055em; text-wrap: balance; }
+.caseDescription { max-width: 630px; margin-top: 18px !important; font-size: 15px; line-height: 1.7; color: var(--pf-muted); }
+.caseActions { display: flex; gap: 20px 28px; flex-wrap: wrap; align-items: center; margin-top: 22px; }
+.caseDetailLink, .caseSiteLink { display: inline-flex; align-items: center; gap: 13px; width: fit-content; min-height: 44px; padding: 8px 0; border: 0; border-bottom: 1px solid currentColor; background: transparent; color: var(--pf-ink); font-size: 13px; line-height: 1.4; }
+.caseSiteLink svg { height: 19px; width: 19px; flex: 0 0 19px; }
+.caseDetailLink:hover, .caseSiteLink:hover { color: var(--pf-muted); }
+.featuredCase { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; gap: 44px; align-items: center; }
+.featuredCase .caseCopy { padding: 0; }
+.featuredCase .caseCopy h3 { font-size: clamp(37px, 4vw, 64px); }
+.featuredCase .caseDescription { max-width: 430px; }
+.projectVisit { display: inline-flex; min-height: 44px; align-items: center; border-bottom: 1px solid currentColor; font-size: 14px; margin-top: 18px; }
 .experience { display: grid; grid-template-columns: 1.35fr 1fr; gap: 44px; border-top: 1px solid var(--pf-line); border-bottom: 1px solid var(--pf-line); padding: 22px 0; align-items: center; }
 .experiencePreview { position: relative; width: 100%; aspect-ratio: 1600 / 953; overflow: hidden; background: #f2eee5; }
 .experienceCopy { padding: 14px 0; }
@@ -238,9 +258,15 @@
   .softwareTabs button:not([aria-selected="true"]) small { display: block; }
   .softwareTabs strong { font-size: 19px; }
   .softwarePreview h3 { font-size: 32px; max-width: 500px; }
-  .softwareMedia { aspect-ratio: 1.75; }
+  .softwareMedia { aspect-ratio: 1.5; }
   .flow { display: block; }
   .experience { grid-template-columns: 1fr; gap: 25px; padding-bottom: 30px; }
+  .webProjects { grid-template-columns: 1fr; gap: 42px; margin-bottom: 42px; }
+  .featuredCase { grid-template-columns: 1fr; gap: 0; }
+  .featuredCase .caseCopy { padding-top: 24px; }
+  .featuredCase .caseDescription { max-width: 630px; }
+  .caseCopy h3, .featuredCase .caseCopy h3 { font-size: clamp(31px, 5.5vw, 44px); }
+  .physicalShowcases { margin-top: 55px; padding-top: 28px; }
   .experienceCopy { padding: 0; }
   .experienceCopy h3 { font-size: 56px; }
   .experienceCopy .label { margin-bottom: 17px; }
@@ -301,6 +327,11 @@
   .softwarePreview h3 { font-size: 29px; margin-top: 23px; }
   .softwarePreview p { font-size: 14px; line-height: 1.65; }
   .softwareBottom { gap: 16px; }
+  .softwareBottom { flex-wrap: wrap; }
+  .caseCopy .label { font-size: 9px; }
+  .caseDescription { font-size: 14px; }
+  .caseActions { gap: 12px 24px; margin-top: 17px; }
+  .caseCopy h3, .featuredCase .caseCopy h3 { font-size: 32px; }
   .flow { display: none; }
   .experience { gap: 23px; }
   .experiencePreview { margin-inline: -7px; width: calc(100% + 14px); }

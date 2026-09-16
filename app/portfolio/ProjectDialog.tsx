@@ -63,11 +63,13 @@ export default function ProjectDialog({
             ))}
           </dl>
           {project.note && <p className={styles.projectNote}>{project.note[locale]}</p>}
+          {project.href && <a className={styles.projectVisit} href={project.href} target="_blank" rel="noopener noreferrer">{project.linkLabel?.[locale] ?? (locale === "es" ? "Visitar sitio" : "Visit website")}</a>}
           <a className={styles.solidButton} href={`https://wa.me/573170893000?text=${encodeURIComponent(message)}`} target="_blank" rel="noopener noreferrer">
             {locale === "es" ? "Quiero crear algo así" : "Let’s create something like this"}
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
           </a>
           {project.source && <a className={styles.sourceLink} href={project.source} target="_blank" rel="noopener noreferrer">{locale === "es" ? "Ver catálogo de origen" : "View source catalog"}</a>}
+          {project.screenshot && <a className={styles.sourceLink} href={project.screenshot} target="_blank" rel="noopener noreferrer">{locale === "es" ? "Ver captura original" : "View original screenshot"}</a>}
         </div>
       </div>
     </dialog>

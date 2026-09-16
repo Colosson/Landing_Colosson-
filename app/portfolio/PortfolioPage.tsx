@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import HtmlMockupFrame from "../HtmlMockupFrame";
 import ProjectDialog from "./ProjectDialog";
+import PortfolioCaseCard from "./PortfolioCaseCard";
 import { physicalProjects, softwareProjects, interactiveProjects, type Locale, type PortfolioProject } from "./portfolioData";
 import styles from "./portfolio.module.css";
 
@@ -21,9 +22,6 @@ const copy = {
     viewPiece: "Ver pieza", viewProject: "Ver proyecto",
     softwareTitle: "Menos fricción.", softwareAccent: "Más posibilidades.",
     softwareIntro: "Sistemas que conectan conversaciones, datos y operaciones.",
-    softwareNames: ["Control de inventario", "Valet inteligente", "Agentes de WhatsApp"],
-    softwareSubtitles: ["WhatsApp → Excel", "NFC → Operación", "Conversaciones → Acciones"],
-    softwareFlow: ["WhatsApp", "Datos", "Operación"],
     interactiveTitle: "No solo se ven.", interactiveAccent: "Se viven.",
     interactiveIntro: "Sitios y productos digitales para explorar, descubrir y conectar.",
     expectraSubtitle: "Eventos y boletería", expectraIntro: "Una nueva forma de descubrir la próxima gran noche.",
@@ -45,9 +43,6 @@ const copy = {
     viewPiece: "View piece", viewProject: "View project",
     softwareTitle: "Less friction.", softwareAccent: "More possibility.",
     softwareIntro: "Systems that connect conversations, data and operations.",
-    softwareNames: ["Inventory control", "Smart valet", "WhatsApp agents"],
-    softwareSubtitles: ["WhatsApp → Excel", "NFC → Operations", "Conversations → Actions"],
-    softwareFlow: ["WhatsApp", "Data", "Operations"],
     interactiveTitle: "Not just seen.", interactiveAccent: "Experienced.",
     interactiveIntro: "Websites and digital products to explore, discover and connect.",
     expectraSubtitle: "Events and ticketing", expectraIntro: "A new way to discover the next great night.",
@@ -60,6 +55,11 @@ const copy = {
 };
 
 const sectionIds = ["impresion-3d", "automatizacion-software", "experiencias-interactivas"];
+const physicalPieces = physicalProjects.filter((project) => !project.href);
+const physicalShowcases = physicalProjects.filter((project) => project.href);
+const websiteProjects = interactiveProjects.filter((project) => project.screenshot);
+const expectra = interactiveProjects.find((project) => project.id === "expectra")!;
+const colosson = interactiveProjects.find((project) => project.id === "colosson-web")!;
 
 function Arrow({ diagonal = false, down = false }: { diagonal?: boolean; down?: boolean }) {
   return <svg className={styles.arrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" style={down ? { transform: "rotate(90deg)" } : undefined}>
@@ -74,7 +74,6 @@ export default function PortfolioPage() {
   const [openProject, setOpenProject] = useState<PortfolioProject | null>(null);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const text = copy[locale];
-  const software = softwareProjects[selectedSoftware];
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -138,7 +137,7 @@ export default function PortfolioPage() {
           <p className={styles.sectionIntro}>{text.physicalIntro}</p>
         </div>
         <div className={styles.physicalGrid}>
-          {physicalProjects.map((project, index) => <article className={styles.piece} key={project.id}>
+          {physicalPieces.map((project, index) => <article className={styles.piece} key={project.id}>
             <button className={styles.pieceButton} type="button" onClick={() => setOpenProject(project)} aria-label={`${text.viewPiece}: ${project.title[locale]}`}>
               <div className={styles.pieceMedia}>
                 <Image src={project.image} alt={project.alt[locale]} width={1200} height={1400} sizes="(max-width: 700px) 100vw, 55vw" unoptimized />
@@ -150,6 +149,9 @@ export default function PortfolioPage() {
             </button>
           </article>)}
         </div>
+        <div className={styles.physicalShowcases}>
+          {physicalShowcases.map((project) => <PortfolioCaseCard key={project.id} project={project} locale={locale} featured onOpen={setOpenProject} />)}
+        </div>
       </section>
 
       <section className={styles.software} id="automatizacion-software" aria-labelledby="software-title">
@@ -160,7 +162,7 @@ export default function PortfolioPage() {
           <div className={styles.softwareTabs} role="tablist" aria-orientation="vertical" aria-label={text.softwareNavigation}>
             {softwareProjects.map((project, index) => <button
               key={project.id} ref={(element) => { tabRefs.current[index] = element; }}
-              type="button" role="tab" id={`tab-${project.id}`} aria-controls="software-preview" aria-selected={selectedSoftware === index} tabIndex={selectedSoftware === index ? 0 : -1}
+              type="button" role="tab" id={`tab-${project.id}`} aria-controls={`software-preview-${project.id}`} aria-selected={selectedSoftware === index} tabIndex={selectedSoftware === index ? 0 : -1}
               onClick={() => setSelectedSoftware(index)}
               onKeyDown={(event) => {
                 let next: number | undefined;
@@ -170,26 +172,31 @@ export default function PortfolioPage() {
                 if (event.key === "End") next = softwareProjects.length - 1;
                 if (next !== undefined) { event.preventDefault(); setSelectedSoftware(next); tabRefs.current[next]?.focus(); }
               }}
-            ><span className={styles.tabNumber}>0{index + 1}</span><span><strong>{text.softwareNames[index]}</strong><small>{text.softwareSubtitles[index]}</small></span><Arrow /></button>)}
+            ><span className={styles.tabNumber}>0{index + 1}</span><span><strong>{project.tabLabel?.[locale] ?? project.title[locale]}</strong><small>{project.tabCaption?.[locale] ?? project.subtitle[locale]}</small></span><Arrow /></button>)}
           </div>
         </div>
-        <div className={styles.softwarePreview} role="tabpanel" id="software-preview" aria-labelledby={`tab-${software.id}`} tabIndex={0}>
+        {softwareProjects.map((software, index) => <div key={software.id} className={styles.softwarePreview} role="tabpanel" id={`software-preview-${software.id}`} aria-labelledby={`tab-${software.id}`} tabIndex={0} hidden={selectedSoftware !== index}>
           <div key={software.id} className={styles.softwarePreviewContent}>
-            <div className={styles.softwareMedia}><Image src={software.image} alt={software.alt[locale]} width={1400} height={747} sizes="(max-width: 900px) 100vw, 60vw" unoptimized /></div>
+            <div className={styles.softwareMedia}><Image src={software.image} alt={software.alt[locale]} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 60vw" unoptimized /></div>
             <h3>{software.title[locale]}</h3>
             <p>{software.description[locale]}</p>
             <div className={styles.softwareBottom}>
               <button type="button" className={styles.outlineButton} onClick={() => setOpenProject(software)}>{text.viewProject}<Arrow /></button>
-              <span className={styles.flow}>{text.softwareSubtitles[selectedSoftware]}</span>
+              {software.href
+                ? <a className={styles.caseSiteLink} href={software.href} target="_blank" rel="noopener noreferrer">{software.linkLabel?.[locale] ?? text.openSite}<Arrow diagonal /></a>
+                : <span className={styles.flow}>{software.tabCaption?.[locale]}</span>}
             </div>
           </div>
-        </div>
+        </div>)}
       </section>
 
       <section className={styles.interactive} id="experiencias-interactivas" aria-labelledby="interactive-title">
         <div className={styles.sectionHeading}>
           <div><p className={styles.label}>03 / {text.categories[2]}</p><h2 id="interactive-title">{text.interactiveTitle}<br /><em>{text.interactiveAccent}</em></h2></div>
           <p className={styles.sectionIntro}>{text.interactiveIntro}</p>
+        </div>
+        <div className={styles.webProjects}>
+          {websiteProjects.map((project, index) => <PortfolioCaseCard key={project.id} project={project} locale={locale} featured={index === 0} onOpen={setOpenProject} />)}
         </div>
         <article className={styles.experience}>
           <div className={styles.experiencePreview}>
@@ -199,11 +206,11 @@ export default function PortfolioPage() {
             <p className={styles.label}>{text.expectraNote}</p>
             <h3>Expectra</h3><p className={styles.experienceSubtitle}>{text.expectraSubtitle}</p>
             <p className={styles.experienceDescription}>{text.expectraIntro}</p>
-            <a className={styles.textLink} href={interactiveProjects[0].href} target="_blank" rel="noopener noreferrer">{text.openExperience}<Arrow /></a>
+            <a className={styles.textLink} href={expectra.href} target="_blank" rel="noopener noreferrer">{text.openExperience}<Arrow /></a>
           </div>
         </article>
         <article className={styles.experienceSecondary}>
-          <Link className={styles.secondaryMedia} href="/" aria-label={text.openSite}><Image src="/colosson-team-final.webp" alt={interactiveProjects[1].alt[locale]} width={1536} height={1024} unoptimized /></Link>
+          <Link className={styles.secondaryMedia} href="/" aria-label={text.openSite}><Image src={colosson.image} alt={colosson.alt[locale]} width={1536} height={1024} unoptimized /></Link>
           <div><h3>Colosson</h3><p>{text.colossonSubtitle}</p></div>
           <Link href="/" className={styles.textLink}>{text.openSite}<Arrow /></Link>
         </article>

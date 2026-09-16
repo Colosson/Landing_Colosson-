@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import AnimatedCompaniesTitle from "./AnimatedCompaniesTitle";
 import AnimatedManifesto from "./AnimatedManifesto";
 import AnimatedWorkTitle from "./AnimatedWorkTitle";
@@ -17,11 +18,18 @@ import ScrollMotionVideo from "./ScrollScrubVideo";
 import ScrollThemeTransition from "./ScrollThemeTransition";
 import ShareButton from "./ShareButton";
 
+function openPortfolio(event: { preventDefault(): void }) {
+  // A document navigation avoids Vinext restoring a previous route's scroll position.
+  event.preventDefault();
+  window.location.assign("/portfolio#portfolio-top");
+}
+
 const content = {
   en: {
     nav: {
       companies: "Companies",
       work: "Work",
+      portfolio: "Portfolio",
       approach: "Approach",
       cta: "Start a project",
       ctaMobile: "Project",
@@ -127,6 +135,7 @@ const content = {
     nav: {
       companies: "Compañías",
       work: "Proyectos",
+      portfolio: "Portafolio",
       approach: "Proceso",
       cta: "Iniciar proyecto",
       ctaMobile: "Proyecto",
@@ -273,6 +282,7 @@ export default function Home() {
         <nav className="nav-links" aria-label={copy.nav.aria}>
           <a href="#companies">{copy.nav.companies}</a>
           <a href="#work">{copy.nav.work}</a>
+          <Link href="/portfolio#portfolio-top" onNavigate={openPortfolio}>{copy.nav.portfolio}</Link>
           <a href="#approach">{copy.nav.approach}</a>
           <a href="#studio" hidden>
             Studio
@@ -280,6 +290,7 @@ export default function Home() {
         </nav>
 
         <div className="header-actions">
+          <Link className="mobile-portfolio-link" href="/portfolio#portfolio-top" onNavigate={openPortfolio}>{copy.nav.portfolio}</Link>
           <LanguageSwitcher />
           <a className="nav-cta" href="#contact">
             <span className="nav-cta-label nav-cta-label-desktop">
@@ -484,6 +495,7 @@ export default function Home() {
         </a>
         <p>{copy.footer.line}</p>
         <div>
+          <Link href="/portfolio#portfolio-top" onNavigate={openPortfolio}>{copy.nav.portfolio}</Link>
           {copy.footer.solutions.map(([label, href]) => (
             <a href={href} key={href}>{label}</a>
           ))}

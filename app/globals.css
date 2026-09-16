@@ -231,6 +231,10 @@ img {
   gap: 2.2rem;
 }
 
+.mobile-portfolio-link {
+  display: none;
+}
+
 .nav-links a,
 footer a {
   position: relative;
@@ -1718,6 +1722,19 @@ footer > div {
     display: none;
   }
 
+  .mobile-portfolio-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    text-underline-offset: 4px;
+  }
+
+  .mobile-portfolio-link:hover {
+    text-decoration: underline;
+  }
+
   .hero {
     grid-template-columns: 1fr;
     min-height: 100svh;
@@ -1788,6 +1805,7 @@ footer > div {
 
   .site-header {
     height: 68px;
+    column-gap: 0.75rem;
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(1rem, env(safe-area-inset-right));
   }
@@ -1798,6 +1816,10 @@ footer > div {
 
   .header-actions {
     gap: 0.4rem;
+  }
+
+  .mobile-portfolio-link {
+    font-size: 0.68rem;
   }
 
   .language-switcher {

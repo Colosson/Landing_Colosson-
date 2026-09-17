@@ -1,0 +1,33 @@
+{
+  "tool": "OpenAI built-in image generation",
+  "modelVersion": "Not exposed by the tool",
+  "prompt": "Use case: compositing. Asset type: editorial portfolio presentation, landscape 1536x1024. Create a refined photorealistic multi-screen presentation of the real ROX BioEnergy website, showing its interior experiences, NOT its homepage. Input 1 is the primary screenshot: the logistics illustrated journey 'Del origen a la entrega', with factory, ship, tanks and truck connected by a fine blue route. Input 2 is the supporting searchable product catalog screenshot. Input 3 is the supporting PAO 4 quick-view drawer screenshot. Place the logistics view on a large thin silver desktop monitor in the center-left, nearly frontal so its line drawings and title remain recognizable. Place two smaller very thin browser-window panels, carefully composed at the right and lower foreground, showing the catalog filters and the PAO 4 drawer. Keep the layout calm, with generous space and balanced proportions, without obscuring the logistics drawing. Environment: seamless warm ivory/beige #f2f0e8 studio background, gentle shadows, subtle daylight, premium product photography. Preserve the real ROX blue logo, blue and white UI, exact recognizable titles and diagram. Keep screenshot contents faithful: do not invent charts, metrics, features or numerical values, do not change the brand or create new UI. Do not add extraneous slogans, captions or decorative symbols outside the screens. No people, plants, unrelated props, watermark or extra device logos. The result must communicate a functional B2B website with a visual supply-chain narrative, searchable catalog and product details.",
+  "capturedAt": "2026-09-17",
+  "sources": [
+    {
+      "screenshot": "rox-logistica.jpg",
+      "url": "https://www.roxbioenergy.com/logistica/",
+      "state": "Sourcing stage of scroll-driven logistics journey"
+    },
+    {
+      "screenshot": "rox-catalogo.jpg",
+      "url": "https://www.roxbioenergy.com/productos/",
+      "state": "Search PAO, 10 matching references"
+    },
+    {
+      "screenshot": "rox-ficha.jpg",
+      "url": "https://www.roxbioenergy.com/productos/",
+      "state": "PAO 4 quick-view drawer"
+    },
+    {
+      "screenshot": "rox-documentacion.jpg",
+      "url": "https://www.roxbioenergy.com/recursos/documentacion/",
+      "state": "Search PAO, two published technical sheets"
+    },
+    {
+      "screenshot": "rox-cotizacion.jpg",
+      "url": "https://www.roxbioenergy.com/cotizacion/?familia=bases-lubricantes&producto=PAO+4",
+      "state": "Family and product prefilled from product quick view; no inquiry submitted"
+    }
+  ]
+}

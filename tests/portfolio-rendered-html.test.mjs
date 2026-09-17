@@ -45,14 +45,25 @@ test("portfolio is a separate Spanish route with its own sharing metadata", asyn
     { section: "experiencias-interactivas", title: "MD Capital", href: "https://mdcapital.com.co/", asset: "md-capital" },
     { section: "experiencias-interactivas", title: "Sofía: Un Verdadero Cuento Ecológico", href: "https://sofiacuentoecologico.com/", asset: "sofia-ecologico" },
     { section: "experiencias-interactivas", title: "PCL® — Prevención y Control Legal", href: "https://www.pcl.legal/", asset: "pcl-legal" },
+    { section: "experiencias-interactivas", title: "ROX BioEnergy", href: "https://www.roxbioenergy.com/", asset: "rox-bioenergy", source: "rox-logistica" },
   ];
-  for (const { section, title, href, asset } of publishedProjects) {
+  for (const { section, title, href, asset, source = asset } of publishedProjects) {
     const [, sectionHtml] = html.match(new RegExp(`<section\\b[^>]*id="${section}"[^>]*>([\\s\\S]*?)</section>`)) ?? [];
     assert.ok(sectionHtml, `${title} has a portfolio category`);
     assert.match(sectionHtml, new RegExp(`<h3\\b[^>]*>${escapePattern(title)}</h3>`), `${title} is rendered in its category`);
     assert.match(sectionHtml, new RegExp(`<a\\b[^>]*href="${escapePattern(href)}"`), `${title} links to its published site`);
     assert.match(sectionHtml, new RegExp(`<img\\b[^>]*src="/portfolio/${asset}\\.webp"`), `${title} renders its own project image`);
-    await access(new URL(`../public/portfolio/sources/${asset}.jpg`, import.meta.url));
+    await access(new URL(`../public/portfolio/sources/${source}.jpg`, import.meta.url));
+  }
+  assert.match(html, /aria-label="Vistas de ROX BioEnergy"/);
+  const roxControls = [...html.matchAll(/<button\b[^>]*aria-controls="rox-bioenergy-experience"[^>]*>/g)].map(([tag]) => tag);
+  assert.equal(roxControls.length, 5, "ROX showcases five interior experiences");
+  assert.equal(roxControls.filter((tag) => /aria-pressed="true"/.test(tag)).length, 1);
+  assert.match(html, /id="rox-bioenergy-experience" role="region" aria-label="Logística animada"/);
+  assert.match(html, /href="https:\/\/www.roxbioenergy.com\/logistica\/"/);
+  for (const view of ["logistica", "catalogo", "ficha", "documentacion", "cotizacion"]) {
+    await access(new URL(`../public/portfolio/rox-${view}.webp`, import.meta.url));
+    await access(new URL(`../public/portfolio/sources/rox-${view}.jpg`, import.meta.url));
   }
   assert.match(html, /href="\/mockups\/expectra\/index.html"/);
   assert.match(html, /Concepto de interfaz/);

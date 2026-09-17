@@ -196,7 +196,7 @@ export default function PortfolioPage() {
           <p className={styles.sectionIntro}>{text.interactiveIntro}</p>
         </div>
         <div className={styles.webProjects}>
-          {websiteProjects.map((project, index) => <PortfolioCaseCard key={project.id} project={project} locale={locale} featured={index === 0} onOpen={setOpenProject} />)}
+          {websiteProjects.map((project, index) => <PortfolioCaseCard key={project.id} project={project} locale={locale} featured={index === 0 || !!project.views?.length} onOpen={setOpenProject} />)}
         </div>
         <article className={styles.experience}>
           <div className={styles.experiencePreview}>

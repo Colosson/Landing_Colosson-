@@ -2,6 +2,16 @@ export type Locale = "es" | "en";
 
 export type Localized = Record<Locale, string>;
 
+export type ProjectView = {
+  id: string;
+  label: Localized;
+  title: Localized;
+  description: Localized;
+  image: string;
+  screenshot: string;
+  href: string;
+};
+
 export type PortfolioProject = {
   id: string;
   category: "physical" | "software" | "interactive";
@@ -18,6 +28,7 @@ export type PortfolioProject = {
   note?: Localized;
   tabLabel?: Localized;
   tabCaption?: Localized;
+  views?: ProjectView[];
 };
 
 const l = (es: string, en: string): Localized => ({ es, en });
@@ -398,5 +409,92 @@ export const interactiveProjects: PortfolioProject[] = [
     href: "https://www.pcl.legal/",
     linkLabel: l("Visitar PCL", "Visit PCL"),
     note: publishedSiteNote,
+  },
+  {
+    id: "rox-bioenergy",
+    category: "interactive",
+    title: l("ROX BioEnergy", "ROX BioEnergy"),
+    subtitle: l("Industria global · Experiencia B2B", "Global industry · B2B experience"),
+    description: l(
+      "La complejidad industrial convertida en un recorrido claro. Un sitio bilingüe que conecta un catálogo técnico con búsqueda y filtros, fichas de producto, documentación y cotizaciones, acompañado de una narrativa logística que avanza con el scroll.",
+      "Industrial complexity made easy to explore. A bilingual website connecting a searchable, filterable technical catalog with product details, documentation and quote requests, alongside a logistics story that unfolds as you scroll.",
+    ),
+    image: "/portfolio/rox-bioenergy.webp",
+    screenshot: "/portfolio/sources/rox-logistica.jpg",
+    alt: l(
+      "Presentación de ROX BioEnergy con el recorrido logístico, catálogo filtrable y ficha rápida de producto",
+      "ROX BioEnergy presentation showing the logistics journey, filterable catalog and product quick view",
+    ),
+    details: [
+      { label: l("Tipo", "Type"), value: l("Sitio B2B con catálogo técnico", "B2B website with a technical catalog") },
+      { label: l("Interacción", "Interaction"), value: l("Scroll narrativo, filtros y vistas rápidas", "Scroll storytelling, filters and quick views") },
+      { label: l("Recorrido", "Journey"), value: l("Producto → Documentación → Cotización", "Product → Documentation → Quote request") },
+      { label: l("Idiomas", "Languages"), value: l("Español e inglés", "Spanish and English") },
+    ],
+    href: "https://www.roxbioenergy.com/",
+    linkLabel: l("Explorar ROX BioEnergy", "Explore ROX BioEnergy"),
+    note: publishedSiteNote,
+    views: [
+      {
+        id: "logistica",
+        label: l("Logística animada", "Animated logistics"),
+        title: l("Una operación que se cuenta en movimiento.", "An operation told through motion."),
+        description: l(
+          "El scroll activa un diagrama que recorre abastecimiento, transporte, almacenamiento y entrega. Las ilustraciones y la ruta se iluminan al ritmo del relato para explicar una operación compleja paso a paso.",
+          "Scrolling activates a diagram through sourcing, transport, storage and delivery. Illustrations and the route light up alongside the story, explaining a complex operation step by step.",
+        ),
+        image: "/portfolio/rox-logistica.webp",
+        screenshot: "/portfolio/sources/rox-logistica.jpg",
+        href: "https://www.roxbioenergy.com/logistica/",
+      },
+      {
+        id: "catalogo",
+        label: l("Catálogo y filtros", "Catalog and filters"),
+        title: l("Encontrar la referencia precisa.", "Find the right reference."),
+        description: l(
+          "Búsqueda por nombre, grado o número CAS, combinada con filtros por familia e industria. Los resultados y los filtros activos se actualizan dentro del directorio sin interrumpir la exploración.",
+          "Search by name, grade or CAS number, combined with family and industry filters. Results and active filters update within the directory without interrupting exploration.",
+        ),
+        image: "/portfolio/rox-catalogo.webp",
+        screenshot: "/portfolio/sources/rox-catalogo.jpg",
+        href: "https://www.roxbioenergy.com/productos/",
+      },
+      {
+        id: "ficha",
+        label: l("Fichas rápidas", "Quick views"),
+        title: l("Todo el contexto, sin perder el lugar.", "Full context, without losing your place."),
+        description: l(
+          "Un panel lateral reúne especificaciones, aplicaciones y sectores relacionados. Permite avanzar entre productos, abrir la ficha completa o pasar a una consulta con la referencia seleccionada.",
+          "A side panel brings together specifications, applications and related industries. Move between products, open the full details or start an inquiry with the selected reference.",
+        ),
+        image: "/portfolio/rox-ficha.webp",
+        screenshot: "/portfolio/sources/rox-ficha.jpg",
+        href: "https://www.roxbioenergy.com/productos/bases-lubricantes/pao-4/",
+      },
+      {
+        id: "documentacion",
+        label: l("Biblioteca técnica", "Technical library"),
+        title: l("La información técnica, a mano.", "Technical information, within reach."),
+        description: l(
+          "Una biblioteca buscable conecta productos con sus fichas técnicas en PDF, mostrando familia, revisión e idioma. El visitante pasa de explorar una referencia a consultar su documentación.",
+          "A searchable library connects products with their PDF technical data sheets, showing family, revision and language. Visitors move from exploring a reference to consulting its documentation.",
+        ),
+        image: "/portfolio/rox-documentacion.webp",
+        screenshot: "/portfolio/sources/rox-documentacion.jpg",
+        href: "https://www.roxbioenergy.com/recursos/documentacion/",
+      },
+      {
+        id: "cotizacion",
+        label: l("Cotización conectada", "Connected quote request"),
+        title: l("De la exploración a una consulta concreta.", "From exploration to a specific inquiry."),
+        description: l(
+          "La familia y el producto viajan desde la ficha hasta el formulario. El visitante completa volumen, frecuencia y destino, y prepara un correo para revisarlo y enviarlo desde su aplicación de correo.",
+          "The family and product carry over from the detail view to the form. Visitors add volume, frequency and destination, then prepare an email to review and send from their email app.",
+        ),
+        image: "/portfolio/rox-cotizacion.webp",
+        screenshot: "/portfolio/sources/rox-cotizacion.jpg",
+        href: "https://www.roxbioenergy.com/cotizacion/?familia=bases-lubricantes&producto=PAO+4",
+      },
+    ],
   },
 ];

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Locale, PortfolioProject } from "./portfolioData";
 import styles from "./portfolio.module.css";
+import PortfolioExperience from "./PortfolioExperience";
 
 export default function PortfolioCaseCard({ project, locale, featured = false, onOpen }: {
   project: PortfolioProject;
@@ -26,6 +27,7 @@ export default function PortfolioCaseCard({ project, locale, featured = false, o
           </a>}
         </div>
       </div>
+      {!!project.views?.length && <PortfolioExperience projectId={project.id} title={project.title[locale]} views={project.views} locale={locale} />}
     </article>
   );
 }

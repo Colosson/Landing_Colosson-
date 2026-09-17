@@ -5,6 +5,7 @@
 ## Canonical pages
 
 - [Colosson](https://colosson.net/): Company overview, selected work and contact.
+- [Portfolio](https://colosson.net/portfolio): Extended portfolio of 3D printing, automation, software and interactive websites, with project details and published examples.
 - [AI systems](https://colosson.net/ai-systems): AI automation, WhatsApp agents and digital operations.
 - [Connected products](https://colosson.net/connected-products): NFC tokens and systems connecting physical interactions to digital workflows.
 - [Custom products](https://colosson.net/custom-products): Corporate objects, 3D production, connected gifts and custom packaging.

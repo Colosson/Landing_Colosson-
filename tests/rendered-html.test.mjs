@@ -202,5 +202,12 @@ test("strict SEO invariants cover clean URLs, mobile conversion and sitemap scop
 
   const sitemap = await sitemapResponse.text();
   assert.doesNotMatch(sitemap, /\/page\//);
-  assert.equal(count(sitemap, /<url>/g), 4);
+  const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+  assert.deepEqual(sitemapUrls.sort(), [
+    "https://colosson.net",
+    "https://colosson.net/portfolio",
+    ...routePaths.map((path) => `https://colosson.net${path}`),
+    "https://colosson.net/privacy-policy",
+    "https://colosson.net/terms-of-service",
+  ].sort());
 });

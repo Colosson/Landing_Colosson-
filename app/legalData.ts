@@ -92,7 +92,14 @@ export const privacyPolicy: Record<Language, LegalCopy> = {
       {
         heading: "8. Data security",
         paragraphs: [
-          "We apply reasonable technical, administrative and organizational measures to protect personal data against loss, unauthorized access, alteration or misuse, proportionate to the sensitivity of the data we handle.",
+          "We apply reasonable technical, administrative and organizational measures to protect personal data against loss, unauthorized access, alteration or misuse, proportionate to the sensitivity of the data we handle:",
+        ],
+        list: [
+          "Encryption in transit: all traffic to and from colosson.net and our commercial channels travels over encrypted connections (HTTPS/TLS).",
+          "Encryption and safeguards at rest: data stored with our hosting and infrastructure providers is kept behind access controls and, where the provider supports it, encrypted at rest.",
+          "Restricted access: only Colosson personnel who need the data to fulfill the purposes described in Section 3 can access it, under confidentiality obligations.",
+          "Sensitive data: Colosson does not request or require sensitive personal data (health, biometric data, racial or ethnic origin, sexual orientation, political opinions, religious or union membership, or other categories defined in Article 5 of Law 1581 of 2012) to provide its services. If we inadvertently receive such data, we apply reinforced protection measures under Article 6 of Law 1581 of 2012 and delete or anonymize it as soon as reasonably possible, unless you have given express authorization for a specific purpose.",
+          "Retention: we keep personal data only for as long as needed to fulfill the purposes described in this policy or as required by law, after which it is deleted or securely anonymized.",
         ],
       },
       {
@@ -196,7 +203,14 @@ export const privacyPolicy: Record<Language, LegalCopy> = {
       {
         heading: "8. Seguridad de la información",
         paragraphs: [
-          "Aplicamos medidas técnicas, administrativas y organizacionales razonables para proteger los datos personales frente a pérdida, acceso no autorizado, alteración o uso indebido, proporcionales a la sensibilidad de los datos que manejamos.",
+          "Aplicamos medidas técnicas, administrativas y organizacionales razonables para proteger los datos personales frente a pérdida, acceso no autorizado, alteración o uso indebido, proporcionales a la sensibilidad de los datos que manejamos:",
+        ],
+        list: [
+          "Cifrado en tránsito: todo el tráfico hacia y desde colosson.net y nuestros canales comerciales viaja mediante conexiones cifradas (HTTPS/TLS).",
+          "Cifrado y resguardo en reposo: los datos almacenados con nuestros proveedores de hosting e infraestructura se mantienen bajo controles de acceso y, cuando el proveedor lo soporta, cifrados en reposo.",
+          "Acceso restringido: solo el personal de Colosson que necesita los datos para cumplir las finalidades descritas en la sección 3 puede acceder a ellos, bajo obligaciones de confidencialidad.",
+          "Datos sensibles: Colosson no solicita ni requiere datos personales sensibles (salud, datos biométricos, origen racial o étnico, orientación sexual, opiniones políticas, convicciones religiosas o afiliación sindical, u otras categorías definidas en el artículo 5 de la Ley 1581 de 2012) para prestar sus servicios. Si llegamos a recibir este tipo de datos de forma inadvertida, aplicamos medidas de protección reforzadas conforme al artículo 6 de la Ley 1581 de 2012 y los eliminamos o anonimizamos tan pronto como sea razonablemente posible, salvo que usted otorgue autorización expresa para un fin específico.",
+          "Retención: conservamos los datos personales solo durante el tiempo necesario para cumplir las finalidades descritas en esta política o los plazos exigidos por la ley, y luego los eliminamos o anonimizamos de forma segura.",
         ],
       },
       {

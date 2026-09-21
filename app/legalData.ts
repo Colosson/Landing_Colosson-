@@ -25,7 +25,7 @@ export const privacyPolicy: Record<Language, LegalCopy> = {
       "How Colosson collects, uses and protects personal data under Colombian data protection law (Law 1581 of 2012 and Decree 1074 of 2015).",
     kicker: "Legal · Data protection",
     title: "Privacy policy",
-    updated: "Last updated: September 3, 2026",
+    updated: "Last updated: September 21, 2026",
     intro:
       "This policy explains how Colosson S.A.S. (“Colosson”, “we”) collects, uses, stores and protects the personal data of visitors, clients and prospects, in accordance with Colombian Law 1581 of 2012, Decree 1074 of 2015 (Title 2, Chapter 25) and the guidance of the Superintendencia de Industria y Comercio (SIC), the Colombian data protection authority.",
     sections: [
@@ -136,7 +136,7 @@ export const privacyPolicy: Record<Language, LegalCopy> = {
       "Cómo Colosson recolecta, usa y protege los datos personales conforme a la Ley 1581 de 2012 y el Decreto 1074 de 2015 en Colombia.",
     kicker: "Legal · Protección de datos",
     title: "Política de privacidad",
-    updated: "Última actualización: 3 de septiembre de 2026",
+    updated: "Última actualización: 21 de septiembre de 2026",
     intro:
       "Esta política explica cómo Colosson S.A.S. (“Colosson”, “nosotros”) recolecta, usa, almacena y protege los datos personales de visitantes, clientes y prospectos, de acuerdo con la Ley 1581 de 2012, el Decreto 1074 de 2015 (Título 2, Capítulo 25) y los lineamientos de la Superintendencia de Industria y Comercio (SIC), autoridad colombiana de protección de datos.",
     sections: [

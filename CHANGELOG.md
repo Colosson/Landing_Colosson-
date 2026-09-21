@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- Rebuilt the Docker build pipeline to install dependencies with `pnpm` (matching `pnpm-lock.yaml`) instead of a lockfile-less `npm install`, added a BuildKit cache mount for the pnpm store, and added `[timing]` log markers around each build stage so build duration is visible in Dokploy's deploy logs. Also added `.dockerignore` to shrink the build context. Verified locally: dependency install dropped from a cold, unmatched-lockfile install to ~17s, full image build to ~34s.
+
+### Fixed
+
+- Corrected the stale "Last updated" date on the privacy policy (EN/ES) to match its content changes, and added an `AGENTS.md` rule requiring the date to be bumped whenever legal page content changes.
+
 ## [2026-09-21]
 
 ### Changed
